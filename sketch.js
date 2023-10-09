@@ -40,7 +40,7 @@ function draw() {
 
 }
 
-function mouseReleased(event) {
+function mousePressed(event) {
     let colClicked = Math.floor(event.x / width * 7);
 
     for (let i = -1; i < board.length; i++) {
@@ -65,7 +65,32 @@ function mouseReleased(event) {
     return false;
 }
 
-function touchReleased(event) {
+/*function mouseReleased(event) {
+    let colClicked = Math.floor(event.x / width * 7);
+
+    for (let i = -1; i < board.length; i++) {
+        if (i === board.length - 1 || board[i + 1][colClicked] !== 0) {
+            board[i][colClicked] = turn;
+            break;
+        }
+    }
+
+    if (isGameOver()) {
+        console.log('game over');
+        alert('Game over!');
+    }
+
+    if (turn === 1) {
+        turn = 2;
+    }
+    else {
+        turn = 1;
+    }
+
+    return false;
+}*/
+
+function touchStarted(event) {
     let colClicked = Math.floor(event.x / width * 7);
 
     for (let i = -1; i < board.length; i++) {
@@ -89,6 +114,31 @@ function touchReleased(event) {
 
     return false;
 }
+
+/*function touchReleased(event) {
+    let colClicked = Math.floor(event.x / width * 7);
+
+    for (let i = -1; i < board.length; i++) {
+        if (i === board.length - 1 || board[i + 1][colClicked] !== 0) {
+            board[i][colClicked] = turn;
+            break;
+        }
+    }
+
+    if (isGameOver()) {
+        console.log('game over');
+        alert('Game over!');
+    }
+
+    if (turn === 1) {
+        turn = 2;
+    }
+    else {
+        turn = 1;
+    }
+
+    return false;
+}*/
 
 function isGameOver() {
     // horizontal check
