@@ -65,6 +65,31 @@ function mouseReleased(event) {
     return false;
 }
 
+function touchReleased(event) {
+    let colClicked = Math.floor(event.x / width * 7);
+
+    for (let i = -1; i < board.length; i++) {
+        if (i === board.length - 1 || board[i + 1][colClicked] !== 0) {
+            board[i][colClicked] = turn;
+            break;
+        }
+    }
+
+    if (isGameOver()) {
+        console.log('game over');
+        alert('Game over!');
+    }
+
+    if (turn === 1) {
+        turn = 2;
+    }
+    else {
+        turn = 1;
+    }
+
+    return false;
+}
+
 function isGameOver() {
     // horizontal check
     for (let i = 0; i < board.length; i++) {
